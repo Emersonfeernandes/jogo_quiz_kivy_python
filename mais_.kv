@@ -1,0 +1,131 @@
+<CadastrarPergunta>:
+    BoxLayout:
+        
+        canvas:
+            Color:
+                rgba:1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                
+        orientation: 'vertical'
+        #padding: '20dp', '10dp'
+        #spacing: '15dp'
+
+        BoxLayout:
+            padding: '15dp', '100dp'
+            spacing: '25dp'
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [dp(35),dp(-220),dp(35),dp(100)] #padding:[right,top,left,bottom]
+            spacing: '9dp'
+        FloatLayout:
+            id: layout_cadas_des
+            TextInput:
+                id: fazer_pergunta
+                hint_text: 'Fazer a Pergunta'
+                multiline: False
+                size_hint: (0.8, .2)
+                pos_hint: {'center_y':2.7, 'x':0.1}
+                on_text: root.on_text(self.text)
+                
+            
+            TextInput:
+                id: opcoes_resposta
+                hint_text: 'Opções de Resposta. (SEPARAR POR VIRGULA)'
+                multiline: False
+                size_hint: (.8, .5)
+                pos_hint: {'center_y':2.1, 'x':0.1}
+                on_text: root.on_text(self.text)
+                
+            TextInput:
+                id: resposta_certa
+                hint_text: 'Resposta'
+                multiline: False
+                size_hint: (0.8, .2)
+                pos_hint: {'center_y':1.5, 'x':0.1}
+                on_text: root.on_text(self.text)
+
+            Button:
+                id: salve
+                text: 'Salvar'
+                size_hint: (.2, .2)
+                pos_hint: {'center_y':1.0,'x':0.7}
+                disabled: True
+                on_press: root.salvar()
+
+
+
+<BOTAO>:
+    text: ''
+    size_hint: .5, .25
+    on_press: root.callback(self.text)
+
+<LABEL>:
+    text: ''
+    size_hint: .5, .25
+
+<Acertou>:
+    canvas:
+        Color:
+            rgba:0.2,0,1,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    pos_hint: {'x':.35, 'y':.35}
+    size_hint: (0.1, 0.1)
+    focus: False
+    Label:
+        text: 'Você Acertou!'
+        size_hint: 1, 1
+        font_size: 30
+        color: 0,1,0
+        text_size: self.width -sp('10'), None
+        halign: 'center'
+        valign: "middle"
+        
+<Errou>:
+    canvas:
+        Color:
+            rgba:0.2,0,1,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    pos_hint: {'x':.35, 'y':.35}
+    size_hint: (0.37, 0.29)
+    Label:
+        text: 'Você Errou!'
+        size_hint: 1, 1
+        font_size: 30
+        color: 1,0,0
+        text_size: self.width -sp('10'), None
+        halign: 'center'
+        valign: "middle"
+
+
+<Game_over>:
+    canvas:
+        Color:
+            rgba:0.2,0,1,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    orientation: 'vertical'
+    Label:
+        text: 'O jogo acabou!'
+        size_hint: 1, 1
+        font_size: 35
+        color: 1,1,1
+        text_size: self.width -sp('10'), None
+        halign: 'center'
+        valign: "middle"
+
+    Label:
+        id: fim
+        text: ''
+        size_hint: 1, 1
+        font_size: 30
+        color: 1,1,1
+        text_size: self.width -sp('10'), None
+        halign: 'center'
+        valign: "middle"

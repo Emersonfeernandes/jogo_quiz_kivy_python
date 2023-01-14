@@ -1,0 +1,110 @@
+#: import WipeTransition kivy.uix.screenmanager.WipeTransition
+#:import Factory kivy.factory.Factory
+Principal:
+    transition: WipeTransition()
+    Vamos_Comecar:
+        name: 'start'
+    My_Game:
+        name: 'my_game'
+
+<Vamos_Comecar>:
+    FloatLayout:
+        id: inicio
+        canvas:
+            Color:
+                rgba:1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        #orientation: 'vertical'
+        Button:
+            id: btn_comecar
+            text: 'Começar'
+            font_size: 30
+            pos_hint: {'center_x':.5, 'center_y':.5}
+            size_hint: .2, .2
+            background_color: (0.2,0,1,1)
+            #on_release: app.root.current = 'my_game'
+            on_press: root.inicio()
+
+<My_Game>:
+    id: e
+    FloatLayout:
+        id: perguntasss
+        canvas:
+            Color:
+                rgba:1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        BoxLayout:
+            id: box
+            orientation: 'vertical'
+            spacing: '10dp'
+            pos_hint: {'x':.10, 'y':.07}
+            size_hint: (.85, .9)
+            Label:
+                id: pergun
+                text: ''
+                size_hint: .5, .25
+                text_size: self.width -sp('10'), None
+                background_color: (0.2,0,1,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+
+            Button:
+                id: opi0
+                text: ''
+                size_hint: .5, .25
+                background_color: 0,0,1
+                text_size: self.width -sp('10'), None
+                on_press: root.responder(self.text)
+
+            Button:
+                id: opi1
+                text: ''
+                size_hint: .5, .25
+                background_color: 0,0,1
+                text_size: self.width -sp('10'), None
+                on_press: root.responder(self.text)
+
+            Button:
+                id: opi2
+                text: ''
+                size_hint: .5, .25
+                background_color: 0,0,1
+                text_size: self.width -sp('10'), None
+                on_press: root.responder(self.text)
+
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba:0.5,0.2,1,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            pos_hint: {'x':.6, 'y':.76}
+            size_hint: (.35, .17)
+            Label:
+                id: acertos
+                size_hint: (.5, 1)
+                font_size: 25
+                color: 0,1,0
+                text_size: self.width -sp('10'), None
+                halign: 'center'
+                valign: "middle"
+            Label:
+                id: erros
+                size_hint: (.5, 1)
+                font_size: 25
+                color: 1,0,0
+                text_size: self.width -sp('10'), None
+                halign: 'center'
+                valign: "middle"
+
+
